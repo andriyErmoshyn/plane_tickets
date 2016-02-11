@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    %title= content_for?(:title) ? (yield(:title) + " | Tickets") : "Tickets"
+    %meta{ name: "description", content: "Train tickets booking demo."}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .container#content
+      .row
+
+        = render 'layouts/header'
+                
+        - flash.each do |key, msg|
+          = content_tag(:div, msg, class: "alert alert-#{key}")
+
+        = yield
+        
+    = render 'layouts/footer'
+    

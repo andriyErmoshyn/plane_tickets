@@ -1,3 +1,6 @@
+source 'https://rubygems.org'
+ruby '2.3.0'
+
 gem 'rails', '4.2.5'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -12,9 +15,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'faker'
-
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
+gem 'cancancan', '~> 1.10'
 
 group :development, :test do
   gem 'pry'
@@ -23,6 +24,7 @@ group :development, :test do
   gem 'sqlite3'
   gem "rspec-rails"
   gem "factory_girl_rails"
+  gem "quiet_assets"
 end
 
 group :test do 

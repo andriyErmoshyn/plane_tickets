@@ -1,0 +1,14 @@
+= content_for(:title, "My page")
+.col-xs-12
+  .col-xs-4
+
+    %h1 My profile
+
+    %p Email: #{ @user.email }
+    %p First name: #{ @user.first_name }
+    %p Last name: #{ @user.last_name }
+    %p Phone number: #{ @user.phone_number }
+    - if can? :update, @user
+      %p= link_to "Edit profile", edit_user_path(@user)
+      
+    %h2 My tickets

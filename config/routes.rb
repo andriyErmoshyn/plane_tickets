@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'destinations#index'
+  root 'routes#index'
 
-  resources :destinations
+  resources :routes
   resources :users, only: [ :new, :create, :show, :edit, :update ]
   resources :password_resets, only: [ :new, :create, :edit, :update ]
 

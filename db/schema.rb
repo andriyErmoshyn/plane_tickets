@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211142128) do
+ActiveRecord::Schema.define(version: 20160212143448) do
+
+  create_table "routes", force: :cascade do |t|
+    t.string   "start_point",                         null: false
+    t.string   "end_point",                           null: false
+    t.datetime "depart",                              null: false
+    t.datetime "arrive",                              null: false
+    t.decimal  "price",       precision: 6, scale: 2, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                      null: false

@@ -11,17 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213142350) do
+ActiveRecord::Schema.define(version: 20160215094025) do
 
   create_table "routes", force: :cascade do |t|
-    t.string   "start_point",                         null: false
-    t.string   "end_point",                           null: false
-    t.datetime "depart",                              null: false
-    t.datetime "arrive",                              null: false
-    t.decimal  "price",       precision: 6, scale: 2, null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "start_point",                                      null: false
+    t.string   "end_point",                                        null: false
+    t.datetime "depart",                                           null: false
+    t.datetime "arrive",                                           null: false
+    t.decimal  "price",        precision: 6, scale: 2,             null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "route_number"
+    t.integer  "seats",                                default: 5
   end
+
+  add_index "routes", ["route_number"], name: "index_routes_on_route_number", unique: true
 
   create_table "tickets", force: :cascade do |t|
     t.integer  "user_id"

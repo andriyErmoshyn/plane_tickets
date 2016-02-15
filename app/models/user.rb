@@ -22,6 +22,11 @@ class User < ActiveRecord::Base
 
   enum role: [:user, :admin]
 
+  def bought_ticket?(route)
+    @route_ids ||= tickets.pluck(:route_id)
+    @route_ids.include?(route.id)
+  end
+
   private
     def email_downcase
       self.email = email.downcase

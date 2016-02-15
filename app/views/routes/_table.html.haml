@@ -1,26 +1,35 @@
 %table.table.table-hover
   %thead
     %tr
+      %th №
       %th From
       %th To
       %th Depart
       %th Arrive
       %th Duration
       %th Price
+      %th Free seats
       - if logged_in? && sale
-        %th
+        %th Tickets
   %tbody
     - routes.each do |route|
       %tr
+        %td= route.route_number
         %td= route.start_point
         %td= route.end_point
         %td= route.depart.to_formatted_s(:long) 
         %td= route.arrive.to_formatted_s(:long) 
-        %td= formatted_duration(route.arrive, route.depart)
+        %td= route.duration
         %td= number_to_currency route.price
+        - if route.sold_out?
+          %td= content_tag(:button, "Sold out", class: "btn btn-danger")
+        - else
+          %td= route.free_seats
         - if logged_in? && sale
           %td
-            - if already_bought_ticket?(route)
+            - if current_user.bought_ticket?(route)
               = content_tag(:button, "You have one", class: "btn btn-success")
+            - elsif route.sold_out?
+              %span
             - else              
               = button_to "Buy a ticket", tickets_path(route_id: route), class: 'btn btn-info'

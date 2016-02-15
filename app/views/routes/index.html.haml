@@ -2,26 +2,4 @@
 
 %h1 All routes
 
-%table.table.table-hovered
-  %thead
-    %tr
-      %th From
-      %th To
-      %th Depart
-      %th Arrive
-      %th Duration
-      %th Price
-      %th
-  %tbody
-    - @routes.each do |route|
-      %tr
-        %td= route.start_point
-        %td= route.end_point
-        %td= route.depart.to_formatted_s(:long) 
-        %td= route.arrive.to_formatted_s(:long) 
-        %td= formatted_duration(route.arrive, route.depart)
-        %td= number_to_currency route.price
-        - if logged_in?
-          %td= link_to "Buy a ticket", '#', class: 'btn btn-info'
-
-
+= render 'table', routes: @routes, sale: true

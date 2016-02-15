@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @routes = current_user.routes
+  end
+
   def update
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"

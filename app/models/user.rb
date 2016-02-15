@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
 
   include Authenticate
 
+  has_many :tickets
+  has_many :routes, through: :tickets
+
   attr_accessor :remember_token, :reset_token
 
   before_save :email_downcase

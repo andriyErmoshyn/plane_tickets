@@ -10,5 +10,7 @@
     %p Phone number: #{ @user.phone_number }
     - if can? :update, @user
       %p= link_to "Edit profile", edit_user_path(@user)
-      
-    %h2 My tickets
+ 
+.col-xs-12      
+  %h2 My tickets
+  = render 'routes/table', routes: @routes, sale: false

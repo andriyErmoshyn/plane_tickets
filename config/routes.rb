@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root 'routes#index'
 
-  resources :routes
+  resources :routes 
+  resources :tickets
+  
   resources :users, only: [ :new, :create, :show, :edit, :update ]
   resources :password_resets, only: [ :new, :create, :edit, :update ]
 

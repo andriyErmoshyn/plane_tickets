@@ -1,0 +1,26 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th From
+      %th To
+      %th Depart
+      %th Arrive
+      %th Duration
+      %th Price
+      - if logged_in? && sale
+        %th
+  %tbody
+    - routes.each do |route|
+      %tr
+        %td= route.start_point
+        %td= route.end_point
+        %td= route.depart.to_formatted_s(:long) 
+        %td= route.arrive.to_formatted_s(:long) 
+        %td= formatted_duration(route.arrive, route.depart)
+        %td= number_to_currency route.price
+        - if logged_in? && sale
+          %td
+            - if already_bought_ticket?(route)
+              = content_tag(:button, "You have one", class: "btn btn-success")
+            - else              
+              = button_to "Buy a ticket", tickets_path(route_id: route), class: 'btn btn-info'

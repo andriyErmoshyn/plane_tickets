@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   root 'routes#index'
 
+  namespace :admin do
+    resources :routes
+    resources :tickets
+  end
+
   resources :routes 
   resources :tickets
   

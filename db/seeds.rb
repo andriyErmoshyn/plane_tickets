@@ -13,12 +13,20 @@ User.create!(email: "second@user.com",
                       password: "password",
                       password_confirmation: "password"
 )
+User.create!(email: "admin@user.com",
+                      first_name: "Admin",
+                      last_name: "User",
+                      phone_number: "38050000",
+                      password: "password",
+                      password_confirmation: "password",
+                      role: 1
+)
 
 from_cities = ["Kyiv", "London", "Berlin", "Madrid", "Barcelona", "Paris"] 
 to_cities= ["Rome", "Brussels", "Warsaw", "New York", "Washington", "Milan"]
 
-20.times do
-  route_number = rand(100..500)
+20.times do |n|
+  route_number = 101 + n
   start_point = from_cities[rand(from_cities.length)]
   end_point = to_cities[rand(to_cities.length)]
   depart = Faker::Time.forward(1, :morning) 

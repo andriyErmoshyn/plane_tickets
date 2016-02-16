@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     end
 
     def role_user
-      self.role = 0
+      self.role = 0 if self.role.blank?
     end
 
 end

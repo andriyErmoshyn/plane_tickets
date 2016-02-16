@@ -12,11 +12,21 @@
       .row
 
         = render 'layouts/header'
-                
-        - flash.each do |key, msg|
-          = content_tag(:div, msg, class: "alert alert-#{key}")
+
+        - if current_user.try(:admin?)
+          %ul.nav.nav-tabs
+            %li{class: current_page?(admin_routes_path) && 'active'}
+              = link_to "Routes", admin_routes_path
+            %li{class: current_page?(admin_tickets_path) && 'active'}
+              = link_to "Tickets", admin_tickets_path
+            %li{class: current_page?(new_admin_route_path) && 'active'}
+              = link_to "New route", new_admin_route_path
+
+        - flash.each do |key, value|
+          %div{class: "alert alert-#{key}"}
+            %a{class: "close", href: "#", "data-dismiss": "alert"} &times;
+            %span= value
 
         = yield
         
     = render 'layouts/footer'
-    

@@ -22,8 +22,12 @@ class SessionsController < ApplicationController
     def create_new_session(user)
       flash[:success] = "You logged in successfully!"
       log_in user
-      yield if block_given? 
-      redirect_to root_url
+      yield if block_given?
+      if user.admin?
+        redirect_to admin_routes_path
+      else
+        redirect_to root_url
+      end
     end
 
 end

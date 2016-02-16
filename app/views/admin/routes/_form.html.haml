@@ -1,0 +1,28 @@
+= form_for [:admin, @route] do |f|
+  
+  = render 'shared/errors_messages', object: f.object
+
+  = f.label          :route_number
+  = f.text_field :route_number, class: "form-control"
+
+  = f.label          :start_point
+  = f.text_field :start_point, class: "form-control"
+
+  = f.label         :end_point
+  = f.text_field :end_point, class: "form-control"
+
+  = f.label         :depart
+  = f.text_field :depart, class: "form-control"
+
+  = f.label         :arrive
+  = f.text_field :arrive, class: "form-control"
+
+  = f.label        :price
+  = f.text_field :price, class: "form-control"
+
+  = f.label         :seats
+  = f.text_field :seats, class: "form-control"
+      
+  %br
+
+  = f.submit yield(:button_text), class: "btn btn-primary"

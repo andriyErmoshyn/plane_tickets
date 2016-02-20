@@ -6,13 +6,6 @@ User.create!(email: "first@user.com",
                       password_confirmation: "password"
 )
 
-User.create!(email: "second@user.com",
-                      first_name: "Alina",
-                      last_name: "Ye",
-                      phone_number: "38050926",
-                      password: "password",
-                      password_confirmation: "password"
-)
 User.create!(email: "admin@user.com",
                       first_name: "Admin",
                       last_name: "User",
@@ -41,7 +34,21 @@ to_cities= ["Rome", "Brussels", "Warsaw", "New York", "Washington", "Milan"]
   )
 end
 
-route = Route.find(5)
 5.times do
-  route.tickets.create
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  email = "#{first_name}@user.com"
+  phone_number = Faker::PhoneNumber.cell_phone
+  User.create!(email: email,
+                      first_name: first_name,
+                      last_name: last_name,
+                      phone_number: phone_number,
+                      password: "password",
+                      password_confirmation: "password"
+  )                      
+end
+
+route = Route.find(3)
+User.last(5).each do |user|
+  user.tickets.create(route_id: route.id)
 end

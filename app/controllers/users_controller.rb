@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @routes = current_user.routes
+    # @routes = current_user.routes
+    @tickets = current_user.tickets
   end
 
   def update

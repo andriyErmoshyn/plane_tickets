@@ -1,0 +1,12 @@
+%h3 Ticket order rejection
+
+%p 
+  Dear #{@user.first_name} #{@user.last_name}!
+  Unfortunatelly, the flight is cancelled because of the
+  weather conditions.
+
+%p 
+  Please, #{ link_to "log in", login_url} and visit your
+  profile page to see the full information
+
+%footer &copy; Plane tickets

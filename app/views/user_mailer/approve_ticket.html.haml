@@ -1,0 +1,11 @@
+%h3 Ticket order confirmation
+
+%p 
+  Dear #{@user.first_name} #{@user.last_name}!
+  Your order confirmed!
+
+%p 
+  Please, #{ link_to "log in", login_url} and visit your
+  profile page to see the full information
+
+%footer &copy; Plane tickets

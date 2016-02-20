@@ -6,10 +6,11 @@ class Ability
     
     if user.admin?
       can :read, :all
-    elsif user.user?
-      can :read, :all
       can :update, User, id: user.id
-      cannot :read, User
+    elsif user.user?
+      can :read, Route
+      can :update, User, id: user.id
+      can :read, User, id: user.id
     else
       can :read, :all
       can :create, User

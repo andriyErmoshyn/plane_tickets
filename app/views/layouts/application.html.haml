@@ -18,7 +18,7 @@
             %li{class: current_page?(admin_routes_path) && 'active'}
               = link_to "Routes", admin_routes_path
             %li{class: current_page?(admin_tickets_path) && 'active'}
-              = link_to "Tickets", admin_tickets_path
+              = link_to "Tickets (#{Ticket.where(status: nil).count})", admin_tickets_path
             %li{class: current_page?(new_admin_route_path) && 'active'}
               = link_to "New route", new_admin_route_path
 

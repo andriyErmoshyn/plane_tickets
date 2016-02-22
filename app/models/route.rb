@@ -8,6 +8,10 @@ class Route < ActiveRecord::Base
   validates :route_number, presence: true, uniqueness: true
   
   def duration
+    arrive - depart
+  end
+
+  def formatted_duration
     total_seconds = arrive - depart
     hours, sec_left = total_seconds.divmod(3600)
     minutes = (sec_left/60).round

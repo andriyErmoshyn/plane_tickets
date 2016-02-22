@@ -13,8 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @routes = current_user.routes
-    @tickets = current_user.tickets
+    @tickets = current_user.tickets.order(created_at: :desc)
   end
 
   def update

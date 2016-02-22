@@ -1,10 +1,11 @@
 %table.table.table-hover
   %thead
     %tr
+      %th Order date
       %th Route №
       %th Route name
       %th Depart
-      - if show_details #'show_details' - for users show view; admin doesn' see these fields at admin/tickets, but sees in his profile
+      - if show_details #'show_details' - for users show view; admin doesn't see these fields at admin/tickets, but sees in his profile
         %th Arrive
         %th Duration
         %th Price
@@ -17,6 +18,7 @@
     %tbody
       - @tickets.each do |ticket|
         %tr
+          %td= ticket.created_at.to_formatted_s(:short)
           %td= ticket.route.route_number 
           %td= "#{ticket.route.start_point} - #{ticket.route.end_point}"
           %td= ticket.route.depart.to_formatted_s(:long)

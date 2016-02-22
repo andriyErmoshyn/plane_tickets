@@ -4,10 +4,17 @@
       %th Route №
       %th From
       %th To
-      %th Depart
+      - if sort
+        %th= sortable "depart"
+      - else
+        %th Depart
       %th Arrive
-      %th Duration
-      %th Price
+      - if sort
+        %th= sortable "duration", "Duration"
+        %th= sortable "price"
+      - else
+        %th Duration
+        %th Price
       %th Free seats
       - if logged_in?
         %th Tickets
@@ -21,7 +28,7 @@
         %td= route.end_point
         %td= route.depart.to_formatted_s(:long) 
         %td= route.arrive.to_formatted_s(:long) 
-        %td= route.duration
+        %td= route.formatted_duration
         %td= number_to_currency route.price
         - if route.sold_out?
           %td= content_tag(:button, "Sold out", class: "btn btn-danger")

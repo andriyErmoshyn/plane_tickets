@@ -2,12 +2,11 @@ module  Admin
   class TicketsController < AdminController
     load_resource
 
-    # def index
-    #   @tickets = Ticket.all
-    # end
+    def index
+      @tickets = Ticket.order(created_at: :desc)
+    end
 
     def update
-      # @ticket = Ticket.find(params[:id])
       if params[:status] == "approved_#{@ticket.id}"
         @ticket.update_attribute(:status, 0)
         UserMailer.approve_ticket(@ticket.user).deliver_now

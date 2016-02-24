@@ -18,12 +18,12 @@ User.create!(email: "admin@user.com",
 from_cities = ["Kyiv", "London", "Berlin", "Madrid", "Barcelona", "Paris"] 
 to_cities= ["Rome", "Brussels", "Warsaw", "New York", "Washington", "Milan"]
 
-20.times do |n|
+100.times do |n|
   route_number = 101 + n
   start_point = from_cities[rand(from_cities.length)]
   end_point = to_cities[rand(to_cities.length)]
-  depart = Faker::Time.forward(1, :morning) 
-  arrive = Faker::Time.forward(1, :afternoon) 
+  depart = Faker::Time.forward(10, :morning) 
+  arrive = depart + rand(100..400).minutes
   price = rand(100..1000)
   Route.create!(route_number: route_number,
                           start_point:  start_point,

@@ -1,5 +1,12 @@
 = content_for(:title, "Home")
 
-%h1 All routes
+%h1 Choose your route
 
-= render 'table', sort: true
+= render 'search_form'
+
+.col-xs-12
+- if params[:start_point]
+  - if @routes.present?  
+    = render 'table', sort: true
+  - else
+    #no-routes No routes found

@@ -16,6 +16,17 @@
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'bootstrap-datetimepicker';
+
+$gradient-value: (#2989d8 10%, #d7dfed 26%, #7fa7e8 53%, #d7dfed 71%, #2989d8 93%, #1e5799 98%);
+$bg_image: asset_url('bg_body.jpg') no-repeat 50% 0;
+@mixin bg-gradient{
+background: $bg_image, #c7e3ea; /* Old browsers */
+background: $bg_image, -moz-linear-gradient(top, $gradient-value ); /* FF3.6-15 */
+background: $bg_image, -webkit-linear-gradient(top,  $gradient-value); /* Chrome10-25,Safari5.1-6 */
+background: $bg_image, linear-gradient(to bottom,  $gradient-value); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
+}
 
 /*Sticky footer CSS code*/
 html{
@@ -38,11 +49,25 @@ footer{
     margin-left: 5%;
     margin-right: 5%;
     padding-top: 5px;
-    border-top: 2px solid $gray-lighter;
-    color: #099;
+    color: white;
     text-align: center;
 }
 /* End of Sticky footer CSS code */
+
+body{
+  @include bg-gradient;
+  
+  h1{
+    font-style: italic;
+    text-align: center;
+    margin: 20px 0;
+    color: #79AFC9;
+  }
+}
+
+#header{
+  background-color: #C8E1F6;
+}
 
 #profile_link{
   color: #4B09D9;
@@ -52,6 +77,41 @@ footer{
   margin-left: 20px;
 }
 
+table * a, #forgot-password, p > a{
+  color: white;
+}
+
 td{
   vertical-align: middle !important;
+}
+
+#search-form { 
+  margin-bottom: 30px;
+
+  #from-to-inputs{ margin-bottom: 40px; }
+  input.form-control { 
+    height: 65px; 
+    font-size:  30px;
+    color: black;
+  }
+
+  .input-group-addon{
+    opacity: 0.9;
+  }
+}
+
+#date-search{
+  text-align: center;
+}
+
+.form-control{
+  opacity: 0.5;
+}
+
+#no-routes{
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  color: white;
 }

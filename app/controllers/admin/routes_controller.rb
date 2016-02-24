@@ -7,7 +7,7 @@ module Admin
         flash[:success] = "Successfully created..."
         redirect_to admin_routes_path
       else
-        flash.now[:success] = "Something went wrong..."
+        flash.now[:danger] = "Something went wrong..."
         render 'new'
       end
     end
@@ -17,6 +17,7 @@ module Admin
         flash[:success] = "Route updated"
         redirect_to admin_routes_path
       else
+        flash.now[:danger] = "Something went wrong..."
         render 'edit'
       end
     end

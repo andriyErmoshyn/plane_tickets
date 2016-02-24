@@ -17,6 +17,10 @@ gem 'haml-rails'
 gem 'faker'
 gem 'cancancan', '~> 1.10'
 
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+gem 'jquery-turbolinks'
+
 group :development, :test do
   gem 'pry'
   gem 'web-console', '~> 2.0'

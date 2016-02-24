@@ -6,7 +6,11 @@ class Route < ActiveRecord::Base
   
   validates :start_point, :end_point, :depart, :arrive, :price, presence: true
   validates :route_number, presence: true, uniqueness: true
-  
+
+  scope :start_point, -> (start_point) { where start_point: start_point }
+  scope :end_point, -> (end_point) { where end_point: end_point }
+  scope :depart, -> (depart) { where("depart like ?", "#{depart.to_date}%") }
+
   def duration
     arrive - depart
   end

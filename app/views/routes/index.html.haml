@@ -4,9 +4,9 @@
 
 = render 'search_form'
 
-.col-xs-12
-- if params[:start_point]
-  - if @routes.present?  
-    = render 'table', sort: true
-  - else
-    #no-routes No routes found
+.col-xs-12#routes
+  - if params[:start_point]
+    - if @routes.present?  
+      = render 'table', sort: true
+    - else
+      #no-routes No routes found

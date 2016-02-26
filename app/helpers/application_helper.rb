@@ -14,7 +14,8 @@ module ApplicationHelper
 
     direction = sort_direction == "asc" ? "desc" : "asc"
         
-    link_to root_path(params.merge(sort: column, direction: direction).symbolize_keys) do
+    link_to root_path(params.merge(sort: column, direction: direction).symbolize_keys), 
+      remote: true do
       "#{title} &nbsp; <i class='glyphicon glyphicon-#{icon_class}'></i>".html_safe
     end
   end

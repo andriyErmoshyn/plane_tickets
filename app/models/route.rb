@@ -9,7 +9,7 @@ class Route < ActiveRecord::Base
 
   scope :start_point, -> (start_point) { where start_point: start_point }
   scope :end_point, -> (end_point) { where end_point: end_point }
-  scope :depart, -> (depart) { where("depart like ?", "#{depart.to_date}%") }
+  scope :depart, -> (depart) { where("to_char(depart, 'YYYY-MM-DD') LIKE ?", "#{depart}%") }
 
   def duration
     arrive - depart

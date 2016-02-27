@@ -8,7 +8,7 @@ class RoutesController < ApplicationController
       sort_routes(@routes)
     end
   end
- 
+
   private
 
     def set_routes
@@ -43,7 +43,7 @@ class RoutesController < ApplicationController
     end
 
     def filtering_params(params)
-      params.slice(:start_point, :end_point, :depart)
+      params.slice(:start_point, :end_point, :depart, :city)
     end
 
 end

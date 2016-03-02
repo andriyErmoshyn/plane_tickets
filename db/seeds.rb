@@ -58,8 +58,15 @@ Route.create!(route_number: 2006,
                           arrive: "2016-03-10 06:28:00",
                           price: 40
 )
+Route.create!(route_number: 2010,
+                          start_point:  "Sofia",
+                          end_point:  "Rome",
+                          depart: "2016-03-10 12:32:00",
+                          arrive: "2016-03-10 13:55:00",
+                          price: 38
+)
 
-cities= ["Rome", "Brussels", "Warsaw", "New York", "Washington", 
+cities= ["Rome", "Brussels", "Warsaw", "New York", "Washington",
             "Milan", "Kyiv", "London", "Berlin", "Madrid", "Barcelona", "Paris"]
 
 500.times do |n|
@@ -67,7 +74,7 @@ cities= ["Rome", "Brussels", "Warsaw", "New York", "Washington",
   start_point = cities[rand(cities.length)]
   reduced_cities = cities - Array(start_point)
   end_point = reduced_cities[rand(reduced_cities.length)]
-  depart = Faker::Time.forward(5, :morning) 
+  depart = Faker::Time.forward(5, :morning)
   arrive = depart + rand(100..400).minutes
   price = rand(100..1000)
   Route.create!(route_number: route_number,
@@ -90,7 +97,7 @@ end
                       phone_number: phone_number,
                       password: "password",
                       password_confirmation: "password"
-  )                      
+  )
 end
 
 route = Route.find(8)

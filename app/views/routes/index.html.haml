@@ -5,11 +5,11 @@
 = render 'search_form'
 
 - if params[:start_point] || params[:end_point] || params[:depart] || params[:city]
-  - if @routes.present?
+  - if @routes.present? || @changes.present?
     - if params[:city].present?
       %h2 All routes from/to #{params[:city]}
     .col-xs-12#routes
-      = render 'table', sort: true, object: @routes
+      = render 'table', sort: true, object: @routes if @routes.present?
     - if @changes.present?
       %h3 You can get your destination with some changes
       - @changes.each do |change|

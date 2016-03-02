@@ -31,7 +31,7 @@ group :development, :test do
   gem "quiet_assets"
 end
 
-group :test do 
+group :test do
   gem "capybara"
   gem "launchy", "~> 2.4.2"
   gem 'shoulda-matchers'
@@ -39,5 +39,6 @@ group :test do
 end
 
 group :production do
+  gem 'puma'
   gem 'rails_12factor'
 end

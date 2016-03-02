@@ -9,6 +9,12 @@
     - if params[:city].present?
       %h2 All routes from/to #{params[:city]}
     .col-xs-12#routes
-      = render 'table', sort: true
+      = render 'table', sort: true, object: @routes
+    - if @changes.present?
+      %h3 You can get your destination with some changes
+      - @changes.each do |change|
+        %h4= pluralize(change.size-1, "change")
+        .col-xs-12
+          = render 'table', sort: false, object: change
   - else
     #no-routes No routes found

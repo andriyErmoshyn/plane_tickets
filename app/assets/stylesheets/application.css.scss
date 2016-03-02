@@ -30,7 +30,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', end
 
 /*Sticky footer CSS code*/
 html{
-  position:relative; 
+  position:relative;
   min-height: 100%;
 }
 html,body{
@@ -39,13 +39,13 @@ html,body{
 }
 #content{
   margin-bottom:40px; // Footer height
-} 
+}
 footer{
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height:40px;    
+    height:40px;
     margin-left: 5%;
     margin-right: 5%;
     padding-top: 5px;
@@ -56,7 +56,8 @@ footer{
 
 body{
   @include bg-gradient;
-  
+  color: black;
+
   h1{
     font-style: italic;
     text-align: center;
@@ -85,12 +86,12 @@ td{
   vertical-align: middle !important;
 }
 
-#search-form { 
+#search-form {
   margin-bottom: 30px;
 
   #from-to-inputs{ margin-bottom: 40px; }
-  input.form-control { 
-    height: 65px; 
+  input.form-control {
+    height: 65px;
     font-size:  30px;
     color: black;
   }
@@ -116,7 +117,7 @@ td{
   color: white;
 }
 
-.city-link{ 
+.city-link{
   color: inherit;
   text-decoration: underline;
 }

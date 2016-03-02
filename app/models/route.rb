@@ -32,7 +32,7 @@ class Route < ActiveRecord::Base
   end
 
   def sold_out?
-    free_seats == 0
+    free_seats.zero?
   end
 
 end

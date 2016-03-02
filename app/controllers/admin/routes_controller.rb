@@ -2,6 +2,11 @@ module Admin
   class RoutesController < AdminController
     load_resource
 
+    #to delete
+    def index
+      @routes = Route.all.order(:id)
+    end
+
     def create      
       if @route.save
         flash[:success] = "Successfully created..."

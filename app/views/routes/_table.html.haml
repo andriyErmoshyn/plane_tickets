@@ -21,7 +21,7 @@
       - if current_user.try(:admin?)
         %th
   %tbody
-    - @routes.each do |route|
+    - object.each do |route|
       %tr
         %td= route.route_number
         %td= link_to route.start_point, routes_path(city: route.start_point, sort: 'depart', direction: 'asc'),

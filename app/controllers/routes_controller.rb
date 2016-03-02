@@ -1,8 +1,11 @@
 class RoutesController < ApplicationController
+  include ChangesSearchable
   helper_method :sort_column, :sort_direction
-  
+
   def index
     set_routes
+
+    set_changes
 
     if params[:sort]
       sort_routes(@routes)
@@ -20,12 +23,9 @@ class RoutesController < ApplicationController
 
     def sort_routes(routes)
       if params[:sort] == 'duration'
-        if sort_direction == 'asc'
-          @routes = routes.sort_by{|route| route.duration}
-        else
-          @routes = routes.sort_by{|route| route.duration}.reverse
-        end
-      else      
+        @routes = routes.sort_by{|route| route.duration}
+        @routes = @routes.reverse if sort_direction == 'desc'
+      else
         @routes = routes.order(sort_column + ' ' + sort_direction)
       end
     end

@@ -43,14 +43,15 @@ module ChangesSearchable
     end
 
     def appropriate_time_filter
+      unappropriate_routes = []
       @changes.each do |change|
-        change.sort_by!{ |route| route.depart }
-        (change.length-1).times do |n|
-          if change[n+1].depart - change[n].arrive < 25.minutes
-            @changes.delete(change)
+          (change.length-1).times do |n|
+            if change[n+1].depart - change[n].arrive < 25.minutes
+              unappropriate_routes << change
+            end
           end
-        end
       end
+      @changes -= unappropriate_routes
     end
 
 end

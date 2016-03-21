@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :ticket do
-    user nil
-    route nil
+    association :user
+    association :route
   end
 end

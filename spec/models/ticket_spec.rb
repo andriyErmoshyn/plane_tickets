@@ -1,5 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe Ticket, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Ticket do
+
+  let!(:ticket) { create :ticket }
+
+  it "has a valid factory" do
+    expect(ticket).to be_valid
+  end
+
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to belong_to(:route) }
+
+  it  { is_expected.to define_enum_for(:status) }
+
 end

@@ -45,5 +45,4 @@ class RoutesController < ApplicationController
     def filtering_params(params)
       params.slice(:start_point, :end_point, :depart, :city)
     end
-
 end

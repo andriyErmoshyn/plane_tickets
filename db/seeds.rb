@@ -1,3 +1,10 @@
+p 'Seeding started..'
+
+DatabaseCleaner.clean_with(:truncation)
+p 'Cleaning tables complete..'
+
+p 'Creating data..'
+
 User.create!(email: "first@user.com",
                       first_name: "Andrew",
                       last_name: "Ye",
@@ -15,61 +22,67 @@ User.create!(email: "admin@user.com",
                       role: 1
 )
 
-# Routes with changes: Sofia - Rome on March 10, 2016
+# Routes with changes: Sofia - Rome on March 25, 2016
 Route.create!(route_number: 2001,
                           start_point:  "Sofia",
                           end_point:  "Warsaw",
-                          depart: "2016-03-10 05:22:00",
-                          arrive: "2016-03-10 06:28:00",
+                          depart: "2016-03-25 05:22:00",
+                          arrive: "2016-03-25 06:28:00",
                           price: 50
 )
 Route.create!(route_number: 2002,
                           start_point:  "Warsaw",
                           end_point:  "Milan",
-                          depart: "2016-03-10 06:55:00",
-                          arrive: "2016-03-10 08:12:00",
+                          depart: "2016-03-25 06:55:00",
+                          arrive: "2016-03-25 08:12:00",
                           price: 45
 )
 Route.create!(route_number: 2003,
                           start_point:  "Milan",
                           end_point:  "Rome",
-                          depart: "2016-03-10 09:00:00",
-                          arrive: "2016-03-10 09:47:00",
+                          depart: "2016-03-25 09:00:00",
+                          arrive: "2016-03-25 09:47:00",
                           price: 20
 )
 Route.create!(route_number: 2004,
                           start_point:  "Sofia",
                           end_point:  "Milan",
-                          depart: "2016-03-10 06:22:00",
-                          arrive: "2016-03-10 07:39:00",
+                          depart: "2016-03-25 06:22:00",
+                          arrive: "2016-03-25 07:39:00",
                           price: 50
 )
 Route.create!(route_number: 2005,
                           start_point:  "Sofia",
                           end_point:  "Warsaw",
-                          depart: "2016-03-10 08:48:00",
-                          arrive: "2016-03-10 10:03:00",
+                          depart: "2016-03-25 08:48:00",
+                          arrive: "2016-03-25 10:03:00",
                           price: 18
 )
 Route.create!(route_number: 2006,
                           start_point:  "Sofia",
                           end_point:  "Milan",
-                          depart: "2016-03-10 05:22:00",
-                          arrive: "2016-03-10 06:28:00",
+                          depart: "2016-03-25 05:22:00",
+                          arrive: "2016-03-25 06:28:00",
                           price: 40
 )
 Route.create!(route_number: 2010,
                           start_point:  "Sofia",
                           end_point:  "Rome",
-                          depart: "2016-03-10 12:32:00",
-                          arrive: "2016-03-10 13:55:00",
+                          depart: "2016-03-25 12:32:00",
+                          arrive: "2016-03-25 13:55:00",
                           price: 38
 )
+Route.create!(route_number: 2084,
+                          start_point:  "Sofia",
+                          end_point:  "Milan",
+                          depart: "2016-03-25 15:32:00",
+                          arrive: "2016-03-25 16:49:00",
+                          price: 20)
 
-cities= ["Rome", "Brussels", "Warsaw", "New York", "Washington",
+cities = ["Rome", "Brussels", "Warsaw", "New York", "Washington",
             "Milan", "Kyiv", "London", "Berlin", "Madrid", "Barcelona", "Paris"]
 
-500.times do |n|
+200.times do |n|
   route_number = 101 + n
   start_point = cities[rand(cities.length)]
   reduced_cities = cities - Array(start_point)

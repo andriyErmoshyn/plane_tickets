@@ -1,4 +1,4 @@
-%table.table.table-hover 
+%table.table.table-hover#routes_table
   %thead
     %tr
       %th Route №
@@ -28,8 +28,8 @@
           class: 'city-link'
         %td= link_to route.end_point, routes_path(city: route.end_point, sort: 'depart', direction: 'asc'),
           class: 'city-link'
-        %td= route.depart.to_formatted_s(:long) 
-        %td= route.arrive.to_formatted_s(:long) 
+        %td= route.depart.to_formatted_s(:long)
+        %td= route.arrive.to_formatted_s(:long)
         %td= route.formatted_duration
         %td= number_to_currency route.price
         - if route.sold_out?
@@ -42,7 +42,7 @@
               = content_tag(:button, "You have one", class: "btn btn-success")
             - elsif route.sold_out?
               %span
-            - else              
-              = button_to "Buy a ticket", tickets_path(route_id: route), class: 'btn btn-info'       
+            - else
+              = button_to "Buy a ticket", tickets_path(route_id: route), class: 'btn btn-info'
         - if current_user.try(:admin?)
           %td= link_to "Edit", edit_admin_route_path(route)

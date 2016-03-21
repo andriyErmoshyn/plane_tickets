@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   include Authenticate
 
-  has_many :tickets
+  has_many :tickets, dependent: :destroy
   has_many :routes, through: :tickets
 
   attr_accessor :remember_token, :reset_token
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                               format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                               uniqueness: { case_sensitive: false }
 
-  has_secure_password                               
+  has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :password_confirmation, presence: true
 

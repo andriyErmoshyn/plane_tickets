@@ -19,12 +19,12 @@
       - @tickets.each do |ticket|
         %tr
           %td= ticket.created_at.to_formatted_s(:short)
-          %td= ticket.route.route_number 
+          %td= ticket.route.route_number
           %td= "#{ticket.route.start_point} - #{ticket.route.end_point}"
           %td= ticket.route.depart.to_formatted_s(:long)
           - if show_details
             %td= ticket.route.arrive.to_formatted_s(:long)
-            %td= ticket.route.duration
+            %td= ticket.route.formatted_duration
             %td= number_to_currency ticket.route.price
           - if show_details
             - if ticket.approved?
@@ -48,5 +48,5 @@
                   = radio_button_tag :status, "approved_#{ticket.id}"
                   = label_tag "status_rejected_#{ticket.id}", "Reject"
                   = radio_button_tag :status, "rejected_#{ticket.id}"
-                  = submit_tag "Send email", class: "btn btn-primary"
-          
+                  = submit_tag "Send email", class: "btn btn-primary", id:"send_email_#{ticket.id}"
+

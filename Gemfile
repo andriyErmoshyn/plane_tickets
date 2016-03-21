@@ -22,13 +22,15 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'jquery-turbolinks'
 
+gem 'web-console', '~> 2.0', group: :development
+
 group :development, :test do
   gem 'pry'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem "quiet_assets"
+  gem 'database_cleaner'
 end
 
 group :test do

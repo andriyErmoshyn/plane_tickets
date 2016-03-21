@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       create_new_session(user) do
-        params[:session][:remember_me] == '1' ? remember(user) : forget(user)  
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       end
     else
       flash.now[:danger] = "Invalid login/password information."

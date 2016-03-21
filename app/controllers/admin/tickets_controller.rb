@@ -2,10 +2,6 @@ module  Admin
   class TicketsController < AdminController
     load_resource
 
-    def index
-      @tickets = Ticket.order(created_at: :desc)
-    end
-
     def update
       if params[:status] == "approved_#{@ticket.id}"
         @ticket.update_attribute(:status, 0)

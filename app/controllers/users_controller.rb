@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @tickets = current_user.tickets.order(created_at: :desc)
+    @tickets = current_user.tickets
   end
 
   def update
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated"
       redirect_to @user
     else
+      flash.now[:danger] = "Something went wrong. Try again, please."
       render 'edit'
     end
   end

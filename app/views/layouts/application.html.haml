@@ -13,6 +13,8 @@
 
         = render 'layouts/header'
 
+        = render 'layouts/manual'
+
         - if current_user.try(:admin?)
           %ul.nav.nav-tabs
             %li{class: current_page?(admin_routes_path) && 'active'}
@@ -28,5 +30,5 @@
             %span= value
 
         = yield
-        
+
     = render 'layouts/footer'

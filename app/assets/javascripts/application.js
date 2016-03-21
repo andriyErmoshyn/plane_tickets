@@ -30,3 +30,20 @@ $(function(){
     format: "YYYY-MM-DD"
   });
 });
+
+// Enable Search button only when all fields are filled in
+$(function (){
+    validate();
+    $('#start_point, #end_point, #date-search').bind('change dp.change', validate);
+});
+
+function validate(){
+    if ($('#start_point').val().length   >   0   &&
+        $('#end_point').val().length  >   0 &&
+        $("#date-search").data("DateTimePicker").date().date.length > 0 ){
+        $("input[type=submit]").prop("disabled", false);
+    }
+    else {
+        $("input[type=submit]").prop("disabled", true);
+    }
+}

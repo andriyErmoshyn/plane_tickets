@@ -19,13 +19,43 @@
 @import 'bootstrap-datetimepicker';
 
 $gradient-value: (#2989d8 10%, #d7dfed 26%, #7fa7e8 53%, #d7dfed 71%, #2989d8 93%, #1e5799 98%);
-$bg_image: asset_url('bg_body.jpg') no-repeat 50% 0;
-@mixin bg-gradient{
-background: $bg_image, #c7e3ea; /* Old browsers */
-background: $bg_image, -moz-linear-gradient(top, $gradient-value ); /* FF3.6-15 */
-background: $bg_image, -webkit-linear-gradient(top,  $gradient-value); /* Chrome10-25,Safari5.1-6 */
-background: $bg_image, linear-gradient(to bottom,  $gradient-value); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+$bg_image_960: asset_url('bg_body_960_480.jpg') no-repeat 50% 0;
+$bg_image_1600: asset_url('bg_body_1600_800.jpg') no-repeat 50% 0;
+$bg_image_2048: asset_url('bg_body_2048_1024.jpg') no-repeat 50% 0;
+
+@mixin bg-gradient-960{
+background: $bg_image_960, #c7e3ea; /* Old browsers */
+background: $bg_image_960, -moz-linear-gradient(top, $gradient-value ); /* FF3.6-15 */
+background: $bg_image_960, -webkit-linear-gradient(top,  $gradient-value); /* Chrome10-25,Safari5.1-6 */
+background: $bg_image_960, linear-gradient(to bottom,  $gradient-value); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
+}
+@mixin bg-gradient-1600{
+background: $bg_image_1600, #c7e3ea; /* Old browsers */
+background: $bg_image_1600, -moz-linear-gradient(top, $gradient-value ); /* FF3.6-15 */
+background: $bg_image_1600, -webkit-linear-gradient(top,  $gradient-value); /* Chrome10-25,Safari5.1-6 */
+background: $bg_image_1600, linear-gradient(to bottom,  $gradient-value); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
+}
+@mixin bg-gradient-2048{
+background: $bg_image_2048, #c7e3ea; /* Old browsers */
+background: $bg_image_2048, -moz-linear-gradient(top, $gradient-value ); /* FF3.6-15 */
+background: $bg_image_2048, -webkit-linear-gradient(top,  $gradient-value); /* Chrome10-25,Safari5.1-6 */
+background: $bg_image_2048, linear-gradient(to bottom,  $gradient-value); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
+}
+
+@media screen and (max-width: 960px) {
+  body { @include bg-gradient-960 }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1600px) {
+  body { @include bg-gradient-1600 }
+}
+
+@media screen and (min-width: 1600px) {
+  body { @include bg-gradient-2048 }
 }
 
 /*Sticky footer CSS code*/
@@ -54,8 +84,7 @@ footer{
 }
 /* End of Sticky footer CSS code */
 
-body{
-  @include bg-gradient;
+body, td:last-child > a{
   color: black;
 
   h1{
@@ -78,7 +107,7 @@ body{
   margin-left: 20px;
 }
 
-table * a, #forgot-password, p > a{
+th > a, #forgot-password, p > a{
   color: white;
 }
 
@@ -101,11 +130,15 @@ td{
   }
 }
 
-#date-search{
+#search-submit, #date-search{
   text-align: center;
+
+  &:disabled{
+    cursor: default;
+  }
 }
 
-.form-control{
+.form-control, #manual{
   opacity: 0.5;
 }
 
